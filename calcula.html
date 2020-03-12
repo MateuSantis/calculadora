@@ -24,9 +24,18 @@
 
         }
 
-        function pressigual(){
-            termo[2] = numero
-            resultado = Number(termo[0]) + Number(termo[2])
+        function pressigual(){ //função das operações que serão feitas após clicar no "="
+            termo[2] = numero 
+            if (termo[1]=="*"){
+                resultado = Number(termo[0]) * Number(termo[2])
+            }else if (termo[1]=="-"){
+                resultado = Number(termo[0]) - Number(termo[2])    
+            }else if (termo[1]=="+"){
+                resultado = Number(termo[0]) + Number(termo[2])
+            }
+            else if (termo[1]=="/"){
+                resultado = Number(termo[0]) / Number(termo[2])
+            }
             limpardisplay()
             mostrarnodisplay(resultado)
         }
