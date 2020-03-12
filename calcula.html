@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+    <script>
+        var areadisplay = ""
+        var numero = ""
+        var termo = [undefined, undefined, undefined]
+        resultado = "undefined"
+
+        function pressNum(num){ //recebe os numeros que foram clicados nos botões
+            numero = numero.concat(num.innerHTML)
+            mostrarnodisplay(num.innerHTML)
+        }
+
+        function pressoperador(op){
+            termo [0] = numero
+            termo [1] = op.innerHTML
+            mostrarnodisplay(op.innerHTML)
+            numero=""
+
+        }
+
+        function pressigual(){
+            termo[2] = numero
+            resultado = Number(termo[0]) + Number(termo[2])
+            limpardisplay()
+            mostrarnodisplay(resultado)
+        }
+
+        function limpamemoria(){ //limpa a memoria dos numeros imputados apertando o botão "C"
+            numero = ""
+        }
+
+        function limpardisplay(){
+            areadisplay = ""
+            var tela = document.getElementById('display')
+            tela.value = areadisplay
+        }
+
+        function limpatudo(){
+            limpardisplay()
+            limpamemoria()
+        }
+
+        function mostrarnodisplay(conteudo){
+           areadisplay = areadisplay.concat(conteudo)
+           var tela = document.getElementById('display')
+           tela.value = areadisplay
+        }
+
+    </script>
+<body>
+    <div id="Calculadora">
+        <textarea id="display" disabled rows="1"></textarea>
+    </div>
+    <div>
+        <button onclick="pressNum(this)" >7</button>
+        <button onclick="pressNum(this)">8</button>
+        <button onclick="pressNum(this)">9</button>
+        <button onclick="pressoperador(this)">*</button>
+    </div>
+    <div>
+        <button onclick="pressNum(this)">4</button>
+        <button onclick="pressNum(this)">5</button>
+        <button onclick="pressNum(this)">6</button>
+        <button onclick="pressoperador(this)">-</button>
+    </div>
+    <div>
+        <button onclick="pressNum(this)">1</button>
+        <button onclick="pressNum(this)">2</button>
+        <button onclick="pressNum(this)">3</button>
+        <button onclick="pressoperador(this)">+</button>
+    </div>
+    <div>
+        <button onclick="limpatudo()">C</button>
+        <button onclick="pressNum(this)">0</button>
+        <button onclick="pressNum(this)">.</button>
+        <button onclick="pressoperador(this)">/</button>
+    </div>
+        <button id="igual" onclick="pressigual()">=</button>
+</body>
+</html>
