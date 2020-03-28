@@ -9,7 +9,7 @@
         var areadisplay = ""
         var numero = ""
         var termo = [undefined, undefined, undefined]
-        resultado = "undefined"
+        resultado = undefined
 
         function pressNum(num){ //recebe os numeros que foram clicados nos botões
             numero = numero.concat(num.innerHTML)
@@ -17,31 +17,42 @@
         }
 
         function pressoperador(op){
-            termo [0] = numero
-            termo [1] = op.innerHTML
+                termo [0] = numero
+                termo [1] = op.innerHTML
             mostrarnodisplay(op.innerHTML)
             numero=""
+            }
+            
+            //FORA DA CONDIÇÃO NADA ACONTECE
 
-        }
+        
 
         function pressigual(){ //função das operações que serão feitas após clicar no "="
-            termo[2] = numero 
+            if (termo[0] !=undefined && termo[1] !=undefined && numero != ""){
+                termo[2] = numero 
+            var manterresultado
             if (termo[1]=="*"){
                 resultado = Number(termo[0]) * Number(termo[2])
             }else if (termo[1]=="-"){
                 resultado = Number(termo[0]) - Number(termo[2])    
             }else if (termo[1]=="+"){
                 resultado = Number(termo[0]) + Number(termo[2])
-            }
-            else if (termo[1]=="/"){
+            }else if (termo[1]=="/"){
                 resultado = Number(termo[0]) / Number(termo[2])
             }
+            manterresultado = resultado
             limpardisplay()
             mostrarnodisplay(resultado)
+            limpamemoria()
+            numero = manterresultado
+            }
+            //FORA DA CONDIÇÃO NADA ACONTECE
         }
 
         function limpamemoria(){ //limpa a memoria dos numeros imputados apertando o botão "C"
             numero = ""
+            termos = [undefined, undefined, undefined]
+            resultado = undefined
         }
 
         function limpardisplay(){
